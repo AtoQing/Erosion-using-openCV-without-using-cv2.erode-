@@ -3,13 +3,11 @@ import numpy as np
 
 def erosion():
 
-
     img = cv2.imread("image.jpg")
     cv2.imshow("Original image", img)
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     (thresh, binary) = cv2.threshold(gray, 177, 255, cv2.THRESH_BINARY)
-
 
     kernel = np.ones((7, 7))
 
