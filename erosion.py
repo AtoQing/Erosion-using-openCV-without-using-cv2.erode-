@@ -27,8 +27,8 @@ def erosion():
 
     for i in range(image_shape[0]):
         for j in range(image_shape[1]):
-            part_of_img = output_image[i:i + filter_shape[0], j:j + filter_shape[1]]
-            result = (part_of_img == kernel)
+            window = output_image[i:i + filter_shape[0], j:j + filter_shape[1]]
+            result = (window == kernel)
             new_value = np.all(result == True)
 
             if new_value:
