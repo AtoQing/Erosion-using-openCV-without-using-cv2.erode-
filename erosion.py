@@ -12,22 +12,22 @@ def erosion():
     kernel = np.ones((7, 7))
 
     image_shape = binary.shape
-    filter_shape = kernel.shape
+    kernel_shape = kernel.shape
 
     binary = binary / 255
 
-    output_row = image_shape[0] + filter_shape[0] - 1
-    output_column = image_shape[1] + filter_shape[1] - 1
+    output_row = image_shape[0] + kernel_shape[0] - 1
+    output_column = image_shape[1] + kernel_shape[1] - 1
     output_image = np.zeros((output_row, output_column))
 
     # padding image
     for i in range(image_shape[0]):
         for j in range(image_shape[1]):
-            output_image[i + int((filter_shape[0] - 1) / 2), j + int((filter_shape[1] - 1) / 2)] = binary[i, j]
+            output_image[i + int((kernel_shape[0] - 1) / 2), j + int((kernel_shape[1] - 1) / 2)] = binary[i, j]
 
     for i in range(image_shape[0]):
         for j in range(image_shape[1]):
-            window = output_image[i:i + filter_shape[0], j:j + filter_shape[1]]
+            window = output_image[i:i + kernel_shape[0], j:j + kernel_shape[1]]
             result = (window == kernel)
             new_value = np.all(result == True)
 
